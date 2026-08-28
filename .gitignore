@@ -1,0 +1,74 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+<<<<<<< HEAD
+.yarn/*
+=======
+>>>>>>> 99931b0 (DevGraph: CognoDB-backed developer skill graph application)
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+<<<<<<< HEAD
+*.log
+=======
+>>>>>>> 99931b0 (DevGraph: CognoDB-backed developer skill graph application)
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+
+<<<<<<< HEAD
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Next.js auto-generated
+next-env.d.ts
+AGENTS.md
+CLAUDE.md
+
+# Vercel
+.vercel
+
+# Misc
+*.pem
+*.key
+*.cert
+=======
+# Misc
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Auto-generated
+AGENTS.md
+CLAUDE.md
+>>>>>>> 99931b0 (DevGraph: CognoDB-backed developer skill graph application)
