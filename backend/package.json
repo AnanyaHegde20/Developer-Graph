@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "echo 'Using vercel.json builds config'",
     "start": "ts-node src/index.ts",
     "seed": "ts-node src/database/seed.ts",
     "cleanup": "ts-node src/database/cleanup.ts",
