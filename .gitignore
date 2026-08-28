@@ -2,10 +2,7 @@
 node_modules/
 .pnp
 .pnp.js
-<<<<<<< HEAD
 .yarn/*
-=======
->>>>>>> 99931b0 (DevGraph: CognoDB-backed developer skill graph application)
 
 # Build outputs
 dist/
@@ -25,10 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-<<<<<<< HEAD
 *.log
-=======
->>>>>>> 99931b0 (DevGraph: CognoDB-backed developer skill graph application)
 
 # IDEs
 .vscode/
@@ -44,7 +38,6 @@ Thumbs.db
 # Testing
 coverage/
 
-<<<<<<< HEAD
 # TypeScript
 *.tsbuildinfo
 tsconfig.tsbuildinfo
@@ -61,14 +54,3 @@ CLAUDE.md
 *.pem
 *.key
 *.cert
-=======
-# Misc
-*.log
-
-# TypeScript
-*.tsbuildinfo
-
-# Auto-generated
-AGENTS.md
-CLAUDE.md
->>>>>>> 99931b0 (DevGraph: CognoDB-backed developer skill graph application)
