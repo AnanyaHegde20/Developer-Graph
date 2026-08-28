@@ -1,0 +1,104 @@
+# DevGraph Deployment Guide (Vercel Multi-Service)
+
+## Step 1: Push to GitHub
+
+```bash
+cd DevGraph
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/YOUR_USERNAME/DevGraph.git
+git push -u origin master
+```
+
+---
+
+## Step 2: Deploy Backend on Vercel
+
+1. Go to https://vercel.com → Sign up (free)
+2. Click **Add New Project**
+3. Import your GitHub repo
+4. Configure:
+   - **Project Name**: `devgraph-backend`
+   - **Root Directory**: `backend`
+   - **Framework Preset**: Other
+5. Add Environment Variables:
+   ```
+   COGNODB_URI = bolt+s://db-216fcb1b.bravo.databases.cognodb.com:7687
+   COGNODB_USERNAME = cognodb
+   COGNODB_PASSWORD = 7cb840f6e0460aa5be66577efb8ec3c3
+   NODE_ENV = production
+   FRONTEND_URL = https://devgraph-frontend.vercel.app
+   ```
+6. Click **Deploy**
+7. Copy the backend URL (e.g., `https://devgraph-backend.vercel.app`)
+8. Test: Open `https://devgraph-backend.vercel.app/health`
+
+---
+
+## Step 3: Deploy Frontend on Vercel
+
+1. Go to https://vercel.com → **Add New Project**
+2. Import same GitHub repo
+3. Configure:
+   - **Project Name**: `devgraph-frontend`
+   - **Root Directory**: `frontend`
+   - **Framework Preset**: Next.js (auto-detected)
+4. Add Environment Variable:
+   ```
+   NEXT_PUBLIC_API_URL = https://devgraph-backend.vercel.app
+   ```
+5. Click **Deploy**
+6. Copy the frontend URL (e.g., `https://devgraph-frontend.vercel.app`)
+
+---
+
+## Step 4: Update Backend CORS
+
+1. Go to Vercel → devgraph-backend → Settings → Environment Variables
+2. Update `FRONTEND_URL` to match your actual frontend URL
+3. Redeploy the backend
+
+---
+
+## URLs After Deployment
+
+| Service | URL |
+|---------|-----|
+| Frontend (share this) | https://devgraph-frontend.vercel.app |
+| Backend API | https://devgraph-backend.vercel.app |
+
+---
+
+## Environment Variables Summary
+
+### Backend (devgraph-backend)
+| Variable | Value |
+|----------|-------|
+| COGNODB_URI | bolt+s://db-216fcb1b.bravo.databases.cognodb.com:7687 |
+| COGNODB_USERNAME | cognodb |
+| COGNODB_PASSWORD | your_cognodb_password |
+| NODE_ENV | production |
+| FRONTEND_URL | https://devgraph-frontend.vercel.app |
+
+### Frontend (devgraph-frontend)
+| Variable | Value |
+|----------|-------|
+| NEXT_PUBLIC_API_URL | https://devgraph-backend.vercel.app |
+
+---
+
+## Troubleshooting
+
+**Backend not connecting to CognoDB?**
+- Check Vercel function logs
+- Verify env vars are correct
+- CognoDB free tier may take 30s to wake up on first request
+
+**Frontend showing errors?**
+- Check NEXT_PUBLIC_API_URL matches your backend URL
+- Redeploy frontend after changing env vars
+
+**CORS errors?**
+- Make sure FRONTEND_URL is set correctly on backend
+- Must match exact frontend URL (including https://)

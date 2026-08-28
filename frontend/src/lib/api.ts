@@ -1,7 +1,9 @@
 import { ApiResponse, Developer, Skill, Project, JobRole, SkillGap, ProjectRecommendation, MultiHopResult } from "./types";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+
 async function fetchApi<T>(endpoint: string): Promise<T> {
-  const res = await fetch(endpoint);
+  const res = await fetch(`${API_URL}${endpoint}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({ error: res.statusText }));
     throw new Error(body.error || `Request failed: ${res.status}`);
